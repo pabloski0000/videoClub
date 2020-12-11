@@ -29,8 +29,10 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('catalog/show/{id}', 'App\Http\Controllers\CatalogController@getShow');
 
 	Route::get('catalog/create', 'App\Http\Controllers\CatalogController@getCreate');
+	Route::post('catalog/create', 'App\Http\Controllers\CatalogController@postCreate');
 
 	Route::get('catalog/edit/{id}', 'App\Http\Controllers\CatalogController@getEdit');
+	Route::put('catalog/edit', 'App\Http\Controllers\CatalogController@putEdit');
 
 	Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 });
