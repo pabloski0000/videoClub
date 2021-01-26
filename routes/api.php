@@ -20,3 +20,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::apiResource('peliculas', PeliculaController::class);
+
+Route::get('peliculas/search/{id}', [PeliculaController::class, 'search']);
