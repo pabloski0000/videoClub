@@ -29,7 +29,7 @@ class PeliculaController extends Controller
             'r' => 'json'
         ]);
 
-        return $response;
+        return response()->json(json_decode($response));
     }
 
     /**
