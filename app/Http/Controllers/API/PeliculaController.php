@@ -17,7 +17,8 @@ class PeliculaController extends Controller
      */
     public function index()
     {
-        return new PeliculaResource(Pelicula::paginate());
+        //return new PeliculaResource(Pelicula::paginate());
+        return PeliculaResource::collection(Pelicula::paginate());
     }
 
     public function search($search){
