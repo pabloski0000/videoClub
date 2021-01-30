@@ -34,3 +34,5 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 });
 
 Route::get('peliculas/search/{search}', [PeliculaController::class, 'search']);
+
+Route::post('peliculas/newOMDB/{idFilm}', [PeliculaController::class, 'searchId']);

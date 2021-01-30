@@ -44,6 +44,25 @@ class PeliculaController extends Controller
         return new PeliculaResource($pelicula);
     }
 
+    public function searchId($search){
+        $host = 'www.omdbapi.com';
+        $response = Http::get('http://' . $host . '/', [
+            'apikey' => env('OMDBAPI_KEY'),
+            'i' => $search,
+            'page' => 1,
+            'r' => 'json'
+        ]);
+
+        $response = json_decode($response, true);
+
+        $pelicula = new Pelicula();
+        $pelicula->title = $response['Title'];
+        $pelicula->director = 'No se conoce';
+        $pelicula->save();
+
+        return new PeliculaResource($pelicula);
+    }
+
     /**
      * Display the specified resource.
      *
