@@ -29,9 +29,9 @@ Route::post('/tokens/create', [LoginController::class, 'createToken']);
     return $request->user();
 });*/
 
-Route::group(['middleware' => ['auth:sanctum']], function () {
+//Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::apiResource('peliculas', PeliculaController::class);
-});
+//});
 
 Route::get('peliculas/search/{search}', [PeliculaController::class, 'search']);
 
