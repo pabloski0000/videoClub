@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\PeliculaController;
+use App\Http\Controllers\Auth\LoginController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,10 +17,13 @@ use App\Http\Controllers\API\PeliculaController;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
+Route::post('tokens/create', [LoginController::class,'createToken']);
+
+
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('peliculas', PeliculaController::class);
+Route::middleware('auth:sanctum')->apiResource('peliculas', PeliculaController::class);
 
 Route::get('peliculas/search/{search}', [PeliculaController::class, 'search'])->name('peliculas.search');
