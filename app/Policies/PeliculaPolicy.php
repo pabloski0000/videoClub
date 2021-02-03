@@ -11,7 +11,9 @@ class PeliculaPolicy
     use HandlesAuthorization;
 
     public function before(User $user, $ability){
-        return $user->esAdministrador();
+        if($user->esAdministrador()){
+            return true;
+        }
     }
 
     /**
@@ -22,7 +24,7 @@ class PeliculaPolicy
      */
     public function viewAny(User $user)
     {
-        //
+
     }
 
     /**
@@ -34,7 +36,7 @@ class PeliculaPolicy
      */
     public function view(User $user, Pelicula $pelicula)
     {
-        //
+
     }
 
     /**
@@ -45,7 +47,7 @@ class PeliculaPolicy
      */
     public function create(User $user)
     {
-        //
+        return $user->esProveedor();
     }
 
     /**
@@ -57,7 +59,7 @@ class PeliculaPolicy
      */
     public function update(User $user, Pelicula $pelicula)
     {
-        //
+
     }
 
     /**
@@ -81,7 +83,7 @@ class PeliculaPolicy
      */
     public function restore(User $user, Pelicula $pelicula)
     {
-        //
+
     }
 
     /**
@@ -93,6 +95,6 @@ class PeliculaPolicy
      */
     public function forceDelete(User $user, Pelicula $pelicula)
     {
-        //
+
     }
 }
