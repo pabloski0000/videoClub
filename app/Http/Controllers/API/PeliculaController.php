@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Http;
 
 class PeliculaController extends Controller
 {
+    public function __construct(){
+        $this->authorizeResource(Pelicula::class,'pelicula');
+    }
+
     /**
      * Display a listing of the resource.
      *
